@@ -1,7 +1,13 @@
 import { type State } from "./state";
 
 export const initialState: State = {
-	stations: undefined,
-	error: undefined,
-	loading: false,
+	liveboard: undefined,
+	trainScheduleError: undefined,
+	trainScheduleLoading: false,
+	news: undefined,
+	newsError: undefined,
+	newsLoading: false,
+	weather: undefined,
+	weatherError: undefined,
+	weatherLoading: false,
 };
