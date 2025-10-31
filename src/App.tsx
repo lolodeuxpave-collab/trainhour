@@ -36,10 +36,10 @@ function App() {
 			<TrainSchedule {...{ state, dispatch }} />
 		 </Pane>
 		 <Pane>
-				<h1>News</h1>
-				<NewsWidget {...{ state, dispatch }} />
 				<h1>Weather</h1>
 				<WeatherWidget {...{ state, dispatch }} />
+				<h1>News</h1>
+				<NewsWidget {...{ state, dispatch }} />
 		 </Pane>
 	</Container>
   )

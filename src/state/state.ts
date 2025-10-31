@@ -1,10 +1,10 @@
 import type { Article } from "../types/article";
-import type { LiveBoard } from "../types/liveboard";
+import type { DepartureType } from "../types/liveboard";
 import type { WeatherData } from "../types/weather";
 
 export type State = { 
 	trainScheduleLoading: boolean,
-	liveboard: LiveBoard | undefined,
+	departures: DepartureType[] | undefined,
 	trainScheduleError: Error | undefined,	
 
 	weather: WeatherData | undefined,

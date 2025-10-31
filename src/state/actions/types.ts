@@ -1,7 +1,7 @@
 export type ActionType = string;
 
 import type {Article} from '../../types/article';
-import type { LiveBoard } from '../../types/liveboard';
+import type { DepartureType } from '../../types/liveboard';
 import type {WeatherData} from '../../types/weather';
 import { 
 	loadTrainSchedule, 
@@ -25,7 +25,7 @@ export type LoadTrainSchedule = {
 
 export type LoadTrainScheduleSuccess = {
 	type: typeof loadTrainScheduleSuccess,
-	liveboard: LiveBoard
+	departures: DepartureType[]
 }
 
 export type LoadTrainScheduleError = {

@@ -3,6 +3,7 @@ import type { Action, State } from "../state"
 import styled from "styled-components";
 import { WiStrongWind, WiRaindrops, WiThermometer } from "react-icons/wi";
 import {accentColor} from "../styles";
+import {SpinnerDiamond} from "spinners-react";
 
 
 export const WeatherContainer = styled.div`
@@ -73,27 +74,31 @@ export const WeatherWidget = ({ state }: WeatherDispatchProps) => {
   const weather = state.weather?.current;
   if (!weather) return null;
 
-  return (
-    <WeatherContainer>
-      <WeatherHeader>
-        <img src={weather.condition.icon} alt={weather.condition.text} />
-        <h2>{weather.condition.text}</h2>
-      </WeatherHeader>
+  return state.weatherLoading 
+		? <SpinnerDiamond /> 
+		: state.weatherError 
+		? <em>{state.weatherError?.message}</em> 
+		: (
+			<WeatherContainer>
+				<WeatherHeader>
+					<img src={weather.condition.icon} alt={weather.condition.text} />
+					<h2>{weather.condition.text}</h2>
+				</WeatherHeader>
 
-      <WeatherDetails>
-        <div className="weather-item">
-          <WiThermometer />
-          <span>{weather.temp_c}°C</span>
-        </div>
-        <div className="weather-item">
-          <WiRaindrops />
-          <span>{weather.precip_mm} mm</span>
-        </div>
-        <div className="weather-item">
-          <WiStrongWind />
-          <span>{weather.gust_kph} kph</span>
-        </div>
-      </WeatherDetails>
-    </WeatherContainer>
-  );
+				<WeatherDetails>
+					<div className="weather-item">
+						<WiThermometer />
+						<span>{weather.temp_c}°C</span>
+					</div>
+					<div className="weather-item">
+						<WiRaindrops />
+						<span>{weather.precip_mm} mm</span>
+					</div>
+					<div className="weather-item">
+						<WiStrongWind />
+						<span>{weather.gust_kph} kph</span>
+					</div>
+				</WeatherDetails>
+			</WeatherContainer>
+		);
 };

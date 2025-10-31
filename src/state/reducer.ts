@@ -33,7 +33,7 @@ export const reducerInner = (state: State, action: Action): State => {
   else if(action.type === loadTrainScheduleSuccess) {
     return {
       ...state,
-			liveboard: (action as LoadTrainScheduleSuccess).liveboard,
+			departures: (action as LoadTrainScheduleSuccess).departures,
 			trainScheduleLoading: false,
     }
   }

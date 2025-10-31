@@ -1,7 +1,7 @@
 import { type State } from "./state";
 
 export const initialState: State = {
-	liveboard: undefined,
+	departures: undefined,
 	trainScheduleError: undefined,
 	trainScheduleLoading: false,
 	news: undefined,

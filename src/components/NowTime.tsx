@@ -20,6 +20,7 @@ export const TimeStyled = styled.div`
   align-items: center;
 	justify-content: center;
 	padding-right: 1em;
+	width: 40vh;
 `;
 
 export const NowTime = () => {

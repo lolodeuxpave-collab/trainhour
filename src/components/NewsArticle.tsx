@@ -108,6 +108,7 @@ export const NewsArticle = ({ article }: NewsArticleProps) => {
       </NewsHeader>
       
       <Description>{article.description}</Description>
+			<img src={article.image_url} />
 
       <Footer>
         <CreatorSource>
