@@ -2,7 +2,7 @@ import { useEffect, type Dispatch } from "react"
 import { actions, type Action, type State } from "../state"
 import type {WeatherData} from "../types/weather";
 
-const weatherApiUrl = `http://api.weatherapi.com/v1/current.json?key=176d6e98c8894466aa6205455253010&q=Nivelles&aqi=no`;
+const weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=176d6e98c8894466aa6205455253010&q=Nivelles&aqi=no`;
 
 export type UseWeatherApiProps = {
 	dispatch: Dispatch<Action>,
