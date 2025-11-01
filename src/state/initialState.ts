@@ -10,4 +10,9 @@ export const initialState: State = {
 	weather: undefined,
 	weatherError: undefined,
 	weatherLoading: false,
+	issues: undefined,
+	issuesError: undefined,
+	issuesLoading: false,
+	stations: undefined,
+	selectedLocation: 'Nivelles'
 };

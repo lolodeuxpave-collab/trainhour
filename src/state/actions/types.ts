@@ -1,6 +1,8 @@
 export type ActionType = string;
 
+import type {Station} from '../../types';
 import type {Article} from '../../types/article';
+import type {IssuesResponse} from '../../types/issues';
 import type { DepartureType } from '../../types/liveboard';
 import type {WeatherData} from '../../types/weather';
 import { 
@@ -13,6 +15,10 @@ import {
 	loadWeather, 
 	loadWeatherError, 
 	loadWeatherSuccess,
+	loadGiteaIssueSuccess,
+	loadGiteaIssueError,
+	loadGiteaIssue,
+	setSelectedLocation,
 } from './consts'
 
 export type Action = {
@@ -25,7 +31,8 @@ export type LoadTrainSchedule = {
 
 export type LoadTrainScheduleSuccess = {
 	type: typeof loadTrainScheduleSuccess,
-	departures: DepartureType[]
+	departures: DepartureType[],
+	stations: Station[]
 }
 
 export type LoadTrainScheduleError = {
@@ -60,5 +67,24 @@ export type LoadWeatherSuccess = {
 export type LoadWeatherError = {
 	type: typeof loadWeatherError,
 	error: Error
+}
+
+export type LoadGiteaIssue = {
+	type: typeof loadGiteaIssue,
+}
+
+export type LoadGiteaIssueSuccess = {
+	type: typeof loadGiteaIssueSuccess,
+	data: IssuesResponse
+}
+
+export type LoadGiteaIssueError = {
+	type: typeof loadGiteaIssueError,
+	error: Error
+}
+
+export type SetSelectedLocation = {
+	type: typeof setSelectedLocation,
+	location: string,
 }
 

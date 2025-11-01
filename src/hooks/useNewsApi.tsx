@@ -10,16 +10,19 @@ export type UseNewsApiProps = {
 }
 
 export const useNewsApi = ({dispatch}: UseNewsApiProps) => {
+	const reloadNews = (async () => {
+		try {
+			dispatch(actions.loadNews({}));
+			const answer = await fetch(newsUrl);
+			const { results: news } = await answer.json() as { results: Article[] }
+			dispatch(actions.loadNewsSuccess({ news }));
+		} catch(error) {
+			dispatch(actions.loadNewsError({ error: error as Error}));
+		}
+	})
 	useEffect(() => {
-		(async () => {
-			try {
-				dispatch(actions.loadNews({}));
-				const answer = await fetch(newsUrl);
-				const { results: news } = await answer.json() as { results: Article[] }
-				dispatch(actions.loadNewsSuccess({ news }));
-			} catch(error) {
-				dispatch(actions.loadNewsError({ error: error as Error}));
-			}
-		})()			
+		reloadNews()
 	}, [])
+
+	return { reloadNews } 
 }

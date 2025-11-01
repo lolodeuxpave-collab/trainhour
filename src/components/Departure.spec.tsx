@@ -31,8 +31,8 @@ export const InfoStyled = styled.div`
 `;
 
 export const DestinationStyled = styled.div`
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
 `;
 
 export const DelayStyled = styled.div`

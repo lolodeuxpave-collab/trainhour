@@ -11,3 +11,9 @@ export const loadNewsError: ActionType  = 'loadNewsError';
 export const loadWeather: ActionType  = 'loadWeather';
 export const loadWeatherSuccess: ActionType  = 'loadWeatherSuccess';
 export const loadWeatherError: ActionType  = 'loadWeatherError';
+
+export const loadGiteaIssue: ActionType  = 'loadGiteaIssue';
+export const loadGiteaIssueSuccess: ActionType  = 'loadGiteaIssueSuccess';
+export const loadGiteaIssueError: ActionType  = 'loadGiteaIssueError';
+
+export const setSelectedLocation: ActionType  = 'setSelectedLocation';

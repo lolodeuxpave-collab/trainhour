@@ -8,6 +8,10 @@ import {
 	loadNewsError,
 	loadNewsSuccess,
 	loadNews,
+	loadGiteaIssueError,
+	loadGiteaIssueSuccess,
+	loadGiteaIssue,
+	setSelectedLocation,
 } from './consts'
 
 import {
@@ -20,6 +24,10 @@ import {
 	type LoadNewsError,
 	type LoadNewsSuccess,
 	type LoadNews,
+	type LoadGiteaIssueError,
+	type LoadGiteaIssueSuccess,
+	type LoadGiteaIssue,
+	type SetSelectedLocation,
 } from './types';
 
 export const actions = {
@@ -59,4 +67,20 @@ export const actions = {
     type: loadWeatherError,
     ...args
   } as LoadWeatherError),
+  loadGiteaIssue: (args: Omit<LoadGiteaIssue, "type">) => ({
+    type: loadGiteaIssue,
+    ...args
+  } as LoadGiteaIssue),
+  loadGiteaIssueSuccess: (args: Omit<LoadGiteaIssueSuccess, "type">) => ({
+    type: loadGiteaIssueSuccess,
+    ...args
+  } as LoadGiteaIssueSuccess),
+  loadGiteaIssueError: (args: Omit<LoadGiteaIssueError, "type">) => ({
+    type: loadGiteaIssueError,
+    ...args
+  } as LoadGiteaIssueError),
+  setSelectedLocation: (args: Omit<SetSelectedLocation, "type">) => ({
+    type: setSelectedLocation,
+    ...args
+  } as SetSelectedLocation),
 }

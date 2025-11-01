@@ -17,6 +17,13 @@ import {
 	type LoadWeatherSuccess,
 	type LoadNewsError,
 	type LoadNewsSuccess,
+	loadGiteaIssueSuccess,
+	loadGiteaIssue,
+	type LoadGiteaIssueSuccess,
+	loadGiteaIssueError,
+	type LoadGiteaIssueError,
+	setSelectedLocation,
+	type SetSelectedLocation,
 } from './actions';
 
 
@@ -34,6 +41,7 @@ export const reducerInner = (state: State, action: Action): State => {
     return {
       ...state,
 			departures: (action as LoadTrainScheduleSuccess).departures,
+			stations: (action as LoadTrainScheduleSuccess).stations,
 			trainScheduleLoading: false,
     }
   }
@@ -84,6 +92,33 @@ export const reducerInner = (state: State, action: Action): State => {
       ...state,
 			weatherError: (action as LoadWeatherError).error,
 			weatherLoading: false,
+    }
+  }
+	else if(action.type === loadGiteaIssue) {
+    return {
+      ...state,
+			issuesError: undefined,
+			issuesLoading: true,
+    }
+  }
+  else if(action.type === loadGiteaIssueSuccess) {
+    return {
+      ...state,
+			issues: (action as LoadGiteaIssueSuccess).data,
+			issuesLoading: false,
+    }
+  }
+  else if(action.type === loadGiteaIssueError) {
+    return {
+      ...state,
+			issuesLoading: false,
+			issuesError: (action as LoadGiteaIssueError).error,
+    }
+  }
+  else if(action.type === setSelectedLocation) {
+    return {
+      ...state,
+			selectedLocation: (action as SetSelectedLocation).location,
     }
   }
   return state;
