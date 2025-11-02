@@ -1,4 +1,4 @@
-import { useEffect, type Dispatch } from "react"
+import { type Dispatch } from "react"
 import { actions, type Action, type State } from "../state"
 import { flatten, range } from 'lodash';
 
@@ -44,8 +44,5 @@ export const useLoadTrainSchedule = (state: State, dispatch: Dispatch<Action>) =
 			dispatch(actions.loadTrainScheduleError({ error: error as Error}))
 		}
 	})
-	useEffect(() => {
-		reloadTrainSchedule()
-	}, [])
 	return { reloadTrainSchedule }
 }

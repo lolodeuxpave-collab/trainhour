@@ -17,3 +17,9 @@ export const loadGiteaIssueSuccess: ActionType  = 'loadGiteaIssueSuccess';
 export const loadGiteaIssueError: ActionType  = 'loadGiteaIssueError';
 
 export const setSelectedLocation: ActionType  = 'setSelectedLocation';
+
+export const setConfig: ActionType = 'setConfig';
+
+export const loadRssFeeds: ActionType  = 'RssFeeds';
+export const loadRssFeedsSuccess: ActionType  = 'RssFeedsSuccess';
+export const loadRssFeedsError: ActionType  = 'RssFeedsError';

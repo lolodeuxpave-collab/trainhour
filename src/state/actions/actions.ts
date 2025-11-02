@@ -12,6 +12,10 @@ import {
 	loadGiteaIssueSuccess,
 	loadGiteaIssue,
 	setSelectedLocation,
+	setConfig,
+	loadRssFeeds,
+	loadRssFeedsSuccess,
+	loadRssFeedsError,
 } from './consts'
 
 import {
@@ -28,6 +32,10 @@ import {
 	type LoadGiteaIssueSuccess,
 	type LoadGiteaIssue,
 	type SetSelectedLocation,
+	type SetConfig,
+	type LoadRssFeeds,
+	type LoadRssFeedsSuccess,
+	type LoadRssFeedsError,
 } from './types';
 
 export const actions = {
@@ -83,4 +91,20 @@ export const actions = {
     type: setSelectedLocation,
     ...args
   } as SetSelectedLocation),
+  setConfig: (args: Omit<SetConfig, "type">) => ({
+    type: setConfig,
+    ...args
+  } as SetConfig),
+  loadRSSFeeds: (args: Omit<LoadRssFeeds, "type">) => ({
+    type: loadRssFeeds,
+    ...args
+  } as LoadRssFeeds),
+  loadRSSFeedsSuccess: (args: Omit<LoadRssFeedsSuccess, "type">) => ({
+    type: loadRssFeedsSuccess,
+    ...args
+  } as LoadRssFeedsSuccess),
+  loadRSSFeedsError: (args: Omit<LoadRssFeedsError, "type">) => ({
+    type: loadRssFeedsError,
+    ...args
+  } as LoadRssFeedsError),
 }

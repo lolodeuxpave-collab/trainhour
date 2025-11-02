@@ -1,4 +1,4 @@
-import { useEffect, type Dispatch } from "react"
+import { type Dispatch } from "react"
 import { actions, type Action, type State } from "../state"
 import type {WeatherData} from "../types/weather";
 
@@ -21,8 +21,5 @@ export const useWeatherApi = ({ dispatch, state }: UseWeatherApiProps) => {
 			dispatch(actions.loadWeatherError({ error: error as Error }));
 		}
 	});
-	useEffect(() => {
-		reloadWeather();
-	}, [])
 	return { reloadWeather }
 }

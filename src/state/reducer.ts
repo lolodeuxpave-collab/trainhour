@@ -24,6 +24,11 @@ import {
 	type LoadGiteaIssueError,
 	setSelectedLocation,
 	type SetSelectedLocation,
+	setConfig,
+	type LoadRssFeedsSuccess,
+	type SetConfig,
+	loadRssFeeds,
+	loadRssFeedsSuccess,
 } from './actions';
 
 
@@ -115,10 +120,38 @@ export const reducerInner = (state: State, action: Action): State => {
 			issuesError: (action as LoadGiteaIssueError).error,
     }
   }
+	else if(action.type === loadRssFeeds) {
+    return {
+      ...state,
+			rssLoading: true,
+    }
+  }
+  else if(action.type === loadRssFeedsSuccess) {
+    return {
+      ...state,
+			rss: (action as LoadRssFeedsSuccess).feeds,
+    }
+  }
+  else if(action.type === loadGiteaIssueError) {
+    return {
+      ...state,
+			issuesLoading: false,
+			issuesError: (action as LoadGiteaIssueError).error,
+    }
+  }
   else if(action.type === setSelectedLocation) {
     return {
       ...state,
 			selectedLocation: (action as SetSelectedLocation).location,
+    }
+  }
+  else if(action.type === setConfig) {
+    return {
+      ...state,
+			config: {
+				...state.config,
+				[(action as SetConfig).setting]: (action as SetConfig).value
+			}
     }
   }
   return state;

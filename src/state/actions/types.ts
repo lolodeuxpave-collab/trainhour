@@ -5,6 +5,7 @@ import type {Article} from '../../types/article';
 import type {IssuesResponse} from '../../types/issues';
 import type { DepartureType } from '../../types/liveboard';
 import type {WeatherData} from '../../types/weather';
+import type {RSS} from '../state';
 import { 
 	loadTrainSchedule, 
 	loadTrainScheduleError, 
@@ -19,6 +20,10 @@ import {
 	loadGiteaIssueError,
 	loadGiteaIssue,
 	setSelectedLocation,
+	setConfig,
+	loadRssFeeds,
+	loadRssFeedsSuccess,
+	loadRssFeedsError,
 } from './consts'
 
 export type Action = {
@@ -88,3 +93,22 @@ export type SetSelectedLocation = {
 	location: string,
 }
 
+export type SetConfig = {
+	type: typeof setConfig,
+	setting: string,
+	value: string | number,
+}
+
+export type LoadRssFeeds = {
+	type: typeof loadRssFeeds,
+}
+
+export type LoadRssFeedsSuccess = {
+	type: typeof loadRssFeedsSuccess,
+	feeds: RSS[]
+}
+
+export type LoadRssFeedsError = {
+	type: typeof loadRssFeedsError,
+	feeds: RSS[]
+}

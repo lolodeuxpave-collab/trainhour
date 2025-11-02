@@ -5,7 +5,7 @@ import {mean} from "lodash";
 
 import styled from "styled-components";
 import { Clock, AlertTriangle, XCircle } from "lucide-react";
-import {accentColor} from "../styles";
+import { accentColor } from "../styles";
 
 export const IndicatorStyled = styled.div`
   display: flex;
@@ -56,17 +56,17 @@ const formatPercent = (num?: number) => {
 };
 
 export const Indicator = ({ state }: { state: State }) => {
-  const inOneHour = state.departures?.filter(filterTrainHour(60));
-  const inThreeHour = state.departures?.filter(filterTrainHour(-60 * 3));
+  const delayDepartures = state.departures?.filter(filterTrainHour(state.config.trainDelayCompute));
+  const cancelledDepartures = state.departures?.filter(filterTrainHour(0, state.config.trainCancelCompute));
 
-  const averageDelayGeneral = mean(inOneHour?.map(d => parseInt(d.delay)));
+  const averageDelayGeneral = mean(delayDepartures?.map(d => parseInt(d.delay)));
   const averageDelayedOnly = mean(
-    inOneHour?.filter(d => parseInt(d.delay) !== 0)?.map(d => parseInt(d.delay))
+    delayDepartures?.filter(d => parseInt(d.delay) !== 0)?.map(d => parseInt(d.delay))
   );
 
   const cancelled =
-    (inThreeHour?.filter(d => d?.canceled === '1')?.length || 0) /
-    (inThreeHour?.length || 1);
+    (cancelledDepartures?.filter(d => d?.canceled === '1')?.length || 0) /
+    (cancelledDepartures?.length || 1);
 
   return (
     <IndicatorStyled>

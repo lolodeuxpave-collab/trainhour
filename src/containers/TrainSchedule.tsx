@@ -11,17 +11,15 @@ import { SpinnerDiamond } from 'spinners-react';
 import type { DepartureType } from '../types/liveboard';
 import { Indicator } from '../components/Indicators';
 
-const showTrainsMinutes = 120;
-
-export const filterTrainHour = (delay: number) => (departure: DepartureType) => {
-		const time = new Date(parseInt(departure.time) * 1000);
-		const now = new Date();
-		const h = time.getHours();
-		const m = time.getMinutes();
-		const nowInMinutes = (now.getHours() * 60) + now.getMinutes();
-		const minutes = h * 60 + m;
-		return (nowInMinutes + delay) > minutes;
-	}
+export const filterTrainHour = (delay: number, start: number = 0) => (departure: DepartureType) => {
+	const time = new Date(parseInt(departure.time) * 1000);
+	const now = new Date();
+	const h = time.getHours();
+	const m = time.getMinutes();
+	const nowInMinutes = (now.getHours() * 60) + now.getMinutes();
+	const minutes = h * 60 + m;
+	return (nowInMinutes + delay) > minutes && (nowInMinutes + start ) < minutes;;
+}
 
 type TrainScheduleProps = {
 	dispatch: Dispatch<Action>,
@@ -30,7 +28,7 @@ type TrainScheduleProps = {
 
 export const TrainSchedule = ({ state } : TrainScheduleProps) => {
 
-	const filteredDepartures = state.departures?.filter(filterTrainHour(showTrainsMinutes)) 
+	const filteredDepartures = state.departures?.filter(filterTrainHour(state.config.trainScheduleShow)) 
 
 	return <>
 		<NowTime />

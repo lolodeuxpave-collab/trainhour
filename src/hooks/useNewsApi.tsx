@@ -1,4 +1,4 @@
-import { useEffect, type Dispatch } from "react"
+import { type Dispatch } from "react"
 import { actions, type Action, type State } from "../state"
 import type {Article} from "../types/article"
 
@@ -20,9 +20,5 @@ export const useNewsApi = ({dispatch}: UseNewsApiProps) => {
 			dispatch(actions.loadNewsError({ error: error as Error}));
 		}
 	})
-	useEffect(() => {
-		reloadNews()
-	}, [])
-
 	return { reloadNews } 
 }

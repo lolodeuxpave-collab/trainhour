@@ -14,5 +14,14 @@ export const initialState: State = {
 	issuesError: undefined,
 	issuesLoading: false,
 	stations: undefined,
-	selectedLocation: 'Nivelles'
+	selectedLocation: 'Nivelles',
+	config: {
+		rssFollow: '',
+		trainCancelCompute: -180,
+		trainDelayCompute: 60,
+		trainScheduleShow: 120
+	},
+	rss: undefined,
+	rssLoading: false,
+	rssError: undefined
 };

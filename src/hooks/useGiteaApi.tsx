@@ -1,4 +1,4 @@
-import { useEffect, type Dispatch } from "react";
+import { type Dispatch } from "react";
 import { actions, type Action, type State } from "../state";
 import type {IssuesResponse} from "../types/issues";
 
@@ -22,10 +22,6 @@ export const useGiteaApi = ({ dispatch }: { state : State, dispatch: Dispatch<Ac
 		}
 		
 	})
-
-	useEffect(() => {
-		reloadIssues();
-	}, [])
 
 	return { reloadIssues }
 }
